@@ -1,6 +1,7 @@
 import math
 #calculates distance between two points using the harvestein formula for spheric shapes.
 
+#two points,
 #janeth smith house
 inicio_lat =  44.040125#degrees in deciamls
 inicio_lon = -123.080226
@@ -26,4 +27,4 @@ def distance( ini_lat, fin_lat, ini_lon, fin_lon):
 
 	return distancia#by 1000 to get it in kilometers.
 
-print(distance(inicio_lat,final_lat,inicio_lon,final_lon))
+print("%.2f meters" % distance(inicio_lat,final_lat,inicio_lon,final_lon))
