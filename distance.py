@@ -1,30 +1,11 @@
-import math
+from math import cos, sin, asin, radians, sqrt
 #calculates distance between two points using the harvestein formula for spheric shapes.
+def distance(ini_lat, ini_lon, fin_lat, fin_lon):
 
-#two points,
-#janeth smith house
-inicio_lat =  44.040125#degrees in deciamls
-inicio_lon = -123.080226
+	dif_lat = radians(ini_lat) - radians(fin_lat)
+	dif_lon = radians(ini_lon) - radians(fin_lon)
+	earth_radio = 6371 #radius in km
+	distance = (sin(dif_lat/2))**2 + cos(radians(ini_lat)) * cos(radians(fin_lat)) * (sin(dif_lon/2))**2
+	distancia = earth_radio * asin(sqrt(distance)) * 2 * 1000 # multiply by 1000 to convert to distance in meters
 
-#7-11
-final_lat =  44.045421
-final_lon = -123.080192
-
-def distance( ini_lat, fin_lat, ini_lon, fin_lon):
-	dif_lat = math.radians(inicio_lat - final_lat)
-	# print(dif_lat)
-	dif_lon = math.radians(inicio_lon - final_lon)
-	# print(dif_lon)
-
-	earth_radio = 6371#in km
-
-	#harversine formula to calculate distance from to points
-	distance = (math.sin(dif_lat/2))**2 + math.cos(inicio_lat) * math.cos(final_lat) * (math.sin(dif_lon/2))**2
-	c = 2 * math.asin(math.sqrt(distance))
-
-	distancia = earth_radio * c * 1000#distance in meters
-
-
-	return distancia#by 1000 to get it in kilometers.
-
-print("%.2f meters" % distance(inicio_lat,final_lat,inicio_lon,final_lon))
+	return distancia
